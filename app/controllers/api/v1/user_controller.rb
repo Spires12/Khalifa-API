@@ -1,19 +1,10 @@
-class v1::UserController < ApiController
+class Api::V1::UserController < ApplicationController
+
   def index
-    @users = User.all   
-  end
+    @users = User.all 
 
-  def new
-  end
+    render json: @users, status: :ok 
 
-  def create
-    @users = User.Create(
-                          name: params[:name],
-                          date_of_birthday: params[:date_of_birthday],
-                          email: params[:email],
-                          password: params[:password]
-    )
-    render :show
   end
 
   def show
