@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 2021_03_24_203010) do
     t.string "first_name"
     t.string "last_name"
     t.datetime "date_of_birthday"
-    t.string "email"
-    t.string "password"
+    t.string "email", default: "", null: false
+    t.string "password_digest", default: "", null: false
+    t.datetime "reset_password_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
