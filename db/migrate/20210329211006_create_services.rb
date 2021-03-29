@@ -4,7 +4,7 @@ class CreateServices < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :category_directory
       t.string :description
-      t.string :value
+      t.float  :value
       t.integer :quantity_of_service
       t.references :users, null: false,foreign_key: { to_table: :users }
       t.timestamps      
