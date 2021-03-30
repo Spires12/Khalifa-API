@@ -10,11 +10,13 @@ class Api::V1::UserController < ApplicationController
 
   def create    
     @users = User.create(user_params)
-    if @users.valid?
-      @users.save
-      @token = encode_token(user_id: @users.id)
 
-      render json: {user: @users, jwt: @token}, status: :created
+    
+    if @users.valid?
+      @token = encode_token({user_id: @users.id})
+      @time = Time.now + 24.hours.to_i
+      @users.save
+      render json: {user: @users, jwt: {token: @token, exp: @time.strftime("%Y-%m-%d %H:%M")} }, status: :created
     else 
       render json: {error: 'falha para criar usuario'},
       status: :not_acceptable
