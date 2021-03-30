@@ -5,7 +5,8 @@ class Api::V1::AuthController < ApplicationController
 
     if @users && @users.authenticate(login_params[:password])
       token = encode_token({user_id: @users.id})
-      render json: {user: @users, jwt: token}, status: :accepted 
+      time = Time.now + 24.hours.to_i
+      render json: {user: @users, jwt:{ token: token, exp: time.strftime("%Y-%m-%d %H:%M")}}, status: :accepted 
     else 
       render json: {menssage: "Invalid login email or password"}  ,
       status: :unauthorized
