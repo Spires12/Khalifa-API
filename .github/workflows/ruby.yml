@@ -34,21 +34,22 @@ jobs:
         - name: Run test
         run: rake test
 
-  test:
-    strategy: 
-      fails-fast: false
-      matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-        ruby-version: ['2.7']
-    name: ${{matrix.os}} ${{matrix.ruby}}
-    runs-on: ${{matrix.os}}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./
-        with:
-          ruby-version: ${{ matrix.ruby}}
-          bundler-cache: true 
-      - run: ruby -v
-      - name: PATH
-        shell: bash 
-        run: echo $PATH
+#  test:
+#    strategy: 
+#      fails-fast: false
+#      matrix:
+#        os: [ubuntu-18.04, ubuntu-20.04]
+#        ruby-version: ['2.7']
+#    name: ${{matrix.os}} ${{matrix.ruby}}
+#    runs-on: ${{matrix.os}}
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: ./
+#        with:
+#          ruby-version: ${{ matrix.ruby}}
+#          bundler-cache: true 
+#      - run: ruby -v
+#      - name: PATH
+#        shell: bash 
+#        run: echo $PATH
+#
