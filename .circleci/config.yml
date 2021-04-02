@@ -4,7 +4,7 @@ executors:
   default:
     working_directory: ~/hix_postgresql
     docker:
-      - image: circleci/ruby:2.7
+      - image: circleci/ruby:2.7.2
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_PATH: vendor/bundle
