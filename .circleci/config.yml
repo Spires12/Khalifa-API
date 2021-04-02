@@ -48,7 +48,7 @@ jobs:
           command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
       - run:
           name: Setup DB
-          command: sudo bundle exec rails db:create db:schema:load --trace
+          command: rails db:create db:schema:load --trace
       - save_cache:
           key: hix_postgresql-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
