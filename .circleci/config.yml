@@ -16,8 +16,8 @@ executors:
           PGUSER: hixonrails
       - image: circleci/postgres:12.0
         environment:
-          POSTGRES_DB: hix_postgresql_test
-          POSTGRES_USER: hixonrails
+          POSTGRES_DB: api_development
+          POSTGRES_USER: postgresql
 
 commands:
   configure_bundler:
