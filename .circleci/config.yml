@@ -10,14 +10,17 @@ executors:
           BUNDLE_PATH: vendor/bundle
           BUNDLE_RETRY: 3
           BUNDLER_VERSION: 2.0.1
-          RAILS_ENV: development
+          RAILS_ENV: test
           DB_HOST: 127.0.0.1
           PG_HOST: 127.0.0.1
-          PGUSER: 1234 
+          PGUSER: hixonrails
       - image: circleci/postgres:12.0
+        auth:
+          username: postgres
+          password: "1234" 
         environment:
           POSTGRES_DB: api_development
-          POSTGRES_USER: postgresql
+          POSTGRES_USER: postgres
 
 commands:
   configure_bundler:
