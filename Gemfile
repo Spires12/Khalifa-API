@@ -5,7 +5,9 @@ ruby '2.7.0'
 
 gem 'rack-cors'
 gem 'rack-attack' # protect api multi request | protect rack
-
+gem 'pager_api' # pagination for routers
+gem 'active_model_serializers', '~> 0.10.0'
+ gem 'pagy'
 gem 'jwt'
 #gem 'active_model_serializers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
