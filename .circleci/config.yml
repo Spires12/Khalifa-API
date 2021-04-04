@@ -44,8 +44,16 @@ jobs:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
       - run:
-          name: Run Rspec
-          command: RAILS_ENV=test bundle exec rspec --format progress $TEST_FILES
+          name: Setup DB
+          command: bundle exec rails db:create db:migrate --trace
+      - save_cache:
+          key: hix_postgresql-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./hix_postgresql
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
